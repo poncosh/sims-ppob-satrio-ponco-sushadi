@@ -3,6 +3,7 @@ import { LoginPage, RegisterPage } from "../../pages/unauthorized";
 import { Layout } from "../../components/Layout";
 import { useAuth } from "../../stores/auth/context";
 import { HomePage } from "../../pages/authorized";
+import { TopUp } from "../../pages/authorized/TopUp";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
       {
         path: "/registration",
         element: <RegisterPage />,
+      },
+      {
+        path: "/top-up",
+        element: <TopUp />,
       },
     ],
   },

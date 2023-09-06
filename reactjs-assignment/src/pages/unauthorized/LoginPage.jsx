@@ -5,7 +5,12 @@ import { useSelector } from "react-redux";
 import { LoadingComponent } from "../../components/LoadingComponent";
 import simsLogo from "../../assets/img/Logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAt, faLock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAt,
+  faEye,
+  faEyeSlash,
+  faLock,
+} from "@fortawesome/free-solid-svg-icons";
 import { Illustration } from "../../components/Illustration";
 import Swal from "sweetalert2";
 
@@ -32,6 +37,7 @@ export const LoginPage = () => {
     condition: false,
     message: "",
   });
+  const [isEye, setEye] = useState(false);
   const loading = useSelector((state) => state.content.isLoading);
 
   const handleInput = (event) => {
@@ -166,7 +172,7 @@ export const LoginPage = () => {
               <input
                 aria-describedby="password-login"
                 className="p-2 rounded-end form-control"
-                type="password"
+                type={!isEye ? "password" : "text"}
                 name="password"
                 placeholder="masukkan password anda"
                 onChange={handleInput}
@@ -188,6 +194,11 @@ export const LoginPage = () => {
                       : "solid 1px grey",
                   color: data.password === "" ? "grey" : "black",
                 }}
+              />
+              <FontAwesomeIcon
+                style={{ position: "absolute", right: "15px" }}
+                icon={!isEye ? faEye : faEyeSlash}
+                onClick={() => setEye(!isEye)}
               />
             </div>
             {errorInput.condition && (

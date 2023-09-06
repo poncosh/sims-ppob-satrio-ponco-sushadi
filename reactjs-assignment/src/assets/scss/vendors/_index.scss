@@ -18,6 +18,40 @@
   cursor: pointer;
 }
 
+#services-id:hover {
+  cursor: pointer;
+}
+
+.sims-logo {
+  position: absolute;
+  top: 15px;
+  left: 10vh;
+}
+
+.sims-logo:hover {
+  cursor: pointer;
+}
+
+.navbar-toggler {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.nav-link {
+  color: #000000 !important;
+  transition: 0.2s;
+}
+
+.nav-link:hover {
+  color: #5a5a5a !important;
+  cursor: pointer !important;
+}
+
+.nav-link.active {
+  color: #f42619 !important;
+}
+
 .colored-toast.swal2-icon-success {
   background-color: #a5dc86 !important;
 }
