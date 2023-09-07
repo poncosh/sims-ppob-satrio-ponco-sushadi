@@ -39,6 +39,7 @@ export const UserData = () => {
           <div className="d-flex flex-row align-items-center">
             <p className="mb-0 me-3">Lihat saldo</p>
             <FontAwesomeIcon
+              id="user-balance-id"
               onClick={() => setEye(!isEye)}
               icon={!isEye ? faEye : faEyeSlash}
             />

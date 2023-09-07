@@ -105,7 +105,9 @@ export const AuthProvider = ({ children }) => {
 
     setAuthState({
       token: null,
-      authenticated: false,
+      authenticated: null,
+      user: null,
+      balance: null,
     });
   };
 
@@ -167,7 +169,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   const transactionService = async (serviceCode) => {
-    console.log("kesini");
     try {
       const { data } = await useApiPrivate().post("/transaction", {
         service_code: serviceCode,

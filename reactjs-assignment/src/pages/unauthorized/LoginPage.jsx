@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../../stores/auth/context";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -39,6 +39,10 @@ export const LoginPage = () => {
   });
   const [isEye, setEye] = useState(false);
   const loading = useSelector((state) => state.content.isLoading);
+
+  useEffect(() => {
+    document.title = "SIMS - PPOB | Login";
+  }, []);
 
   const handleInput = (event) => {
     const { value, name } = event.target;
@@ -83,7 +87,7 @@ export const LoginPage = () => {
       className="d-flex flex-row"
       style={{
         width: "100vw",
-        height: "100vh",
+        minHeight: "100vh",
       }}
     >
       <div
