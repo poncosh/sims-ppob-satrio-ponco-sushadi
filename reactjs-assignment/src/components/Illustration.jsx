@@ -7,7 +7,7 @@ export const Illustration = () => {
       <img
         src={loginIlustration}
         className="h-100 w-100"
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: "cover", maxHeight: "100vh" }}
       />
     </div>
   );
