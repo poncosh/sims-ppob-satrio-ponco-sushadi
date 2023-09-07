@@ -1,12 +1,18 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  useMemo,
-  useRef,
-} from "react";
+import { createContext, useContext, useEffect, useState, useMemo } from "react";
 import { useApi, useApiPrivate } from "../../../composables/useApi";
+import Swal from "sweetalert2";
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-right",
+  iconColor: "white",
+  customClass: {
+    popup: "colored-toast",
+  },
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true,
+});
 
 const AuthContext = createContext({});
 
@@ -29,16 +35,22 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       const token = localStorage.getItem("SIMS_PPOB_TOKEN");
+      try {
+        if (token) {
+          const { data: user } = await useApiPrivate().get("/profile");
+          const { data: balance } = await useApiPrivate().get("/balance");
 
-      if (token) {
-        const { data: user } = await useApiPrivate().get("/profile");
-        const { data: balance } = await useApiPrivate().get("/balance");
-
-        setAuthState({
-          token: token,
-          authenticated: true,
-          user: user.data,
-          balance: balance.data?.balance,
+          setAuthState({
+            token: token,
+            authenticated: true,
+            user: user.data,
+            balance: balance.data?.balance,
+          });
+        }
+      } catch (error) {
+        await Toast.fire({
+          icon: "info",
+          title: "Please login again",
         });
       }
     })();
