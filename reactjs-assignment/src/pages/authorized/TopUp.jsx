@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { HeaderWeb } from "../../components/HeaderWeb";
 import { UserData } from "../../components/UserData";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -39,6 +39,10 @@ export const TopUp = () => {
       amount: 500000,
     },
   ];
+
+  useEffect(() => {
+    document.title = "SIMS - PPOB | Top Up";
+  }, []);
 
   const handleAmount = (value) => {
     setAmount(value);

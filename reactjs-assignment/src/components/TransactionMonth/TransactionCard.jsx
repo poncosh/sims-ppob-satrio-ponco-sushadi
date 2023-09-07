@@ -1,7 +1,6 @@
 import React from "react";
 
 export const TransactionCard = ({ data }) => {
-  console.log(data);
   return (
     <div className="card w-100">
       <div className="card-body">

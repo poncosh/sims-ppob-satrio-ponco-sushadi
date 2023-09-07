@@ -22,6 +22,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     dispatch(getServices()).then(() => dispatch(getBanner()));
+    document.title = "SIMS - PPOB | Home";
   }, [dispatch]);
 
   if (!authState?.authenticated) {

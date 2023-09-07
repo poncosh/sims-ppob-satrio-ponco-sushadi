@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../../stores/auth/context";
 import { HeaderWeb } from "../../components/HeaderWeb";
 import { UserData } from "../../components/UserData";
@@ -16,6 +16,10 @@ export const PaymentPage = () => {
   const navigate = useNavigate();
   const services = useSelector((state) => state.content.services);
   const data = services.filter((el) => el.service_code === slug)[0];
+
+  useEffect(() => {
+    document.title = `SIMS - PPOB | Bayar ${data.service_name}`;
+  }, []);
 
   const submitTransaction = () => {
     Swal.fire({

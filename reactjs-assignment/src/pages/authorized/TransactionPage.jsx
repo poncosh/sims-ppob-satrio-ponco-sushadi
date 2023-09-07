@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useId } from "react";
 import { useAuth } from "../../stores/auth/context";
 import { UserData } from "../../components/UserData";
 import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -18,6 +18,7 @@ export const TransactionPage = () => {
 
   useEffect(() => {
     dispatch(getTransactionHistory());
+    document.title = "SIMS - PPOB | Transaksi";
   }, [dispatch]);
 
   const data = transaction.map((el) => ({
@@ -32,18 +33,54 @@ export const TransactionPage = () => {
   }));
 
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    {
+      id: 1,
+      name: "January",
+    },
+    {
+      id: 2,
+      name: "February",
+    },
+    {
+      id: 3,
+      name: "March",
+    },
+    {
+      id: 4,
+      name: "April",
+    },
+    {
+      id: 5,
+      name: "May",
+    },
+    {
+      id: 6,
+      name: "June",
+    },
+    {
+      id: 7,
+      name: "July",
+    },
+    {
+      id: 8,
+      name: "August",
+    },
+    {
+      id: 9,
+      name: "September",
+    },
+    {
+      id: 10,
+      name: "October",
+    },
+    {
+      id: 11,
+      name: "November",
+    },
+    {
+      id: 12,
+      name: "December",
+    },
   ];
 
   if (!authState?.authenticated) {
@@ -68,17 +105,22 @@ export const TransactionPage = () => {
           <div className="row">
             {months.map((month) => (
               <p
+                key={month.id}
                 id="navigation-id"
-                onClick={() => navigate(`/transaction/${month.toLowerCase()}`)}
-                className="m-0 col-1 rounded-top text-center pt-2 pb-2"
+                onClick={() =>
+                  navigate(`/transaction/${month.name.toLowerCase()}`)
+                }
+                className="m-0 col-4 col-md-3 col-lg-1 rounded-top text-center pt-2 pb-2"
                 style={{
                   fontWeight:
-                    monthLocation === month.toLowerCase() ? "700" : "400",
+                    monthLocation === month.name.toLowerCase() ? "700" : "400",
                   backgroundColor:
-                    monthLocation === month.toLowerCase() ? "#D7CABF" : "white",
+                    monthLocation === month.name.toLowerCase()
+                      ? "#D7CABF"
+                      : "white",
                 }}
               >
-                {month}
+                {month.name}
               </p>
             ))}
           </div>
