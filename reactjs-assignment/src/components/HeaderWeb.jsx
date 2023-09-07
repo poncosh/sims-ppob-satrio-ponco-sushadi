@@ -63,6 +63,10 @@ export const HeaderWeb = () => {
             </li>
             <li className="navbar-item">
               <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/account");
+                }}
                 className={
                   location === "account" ? "nav-link active" : "nav-link"
                 }

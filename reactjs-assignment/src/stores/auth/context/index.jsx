@@ -109,6 +109,25 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  const updatePicture = async (pics) => {
+    try {
+      const { data } = await useApiPrivate().put("/profile/image", pics, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      setAuthState({
+        ...authState,
+        user: data.data,
+      });
+
+      return data;
+    } catch (error) {
+      return { error: true, msg: error.response.data.message };
+    }
+  };
+
   const updateProfile = async (dataUser) => {
     try {
       const { email, first_name, last_name } = dataUser;
@@ -172,6 +191,7 @@ export const AuthProvider = ({ children }) => {
     onRegister: register,
     onLogout: logout,
     onUpdateProfile: updateProfile,
+    onUpdatePicture: updatePicture,
     onTopUp: topUpBalance,
     onTransaction: transactionService,
     fullName: full_name,

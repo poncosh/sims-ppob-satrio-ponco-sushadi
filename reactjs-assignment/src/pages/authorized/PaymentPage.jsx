@@ -41,7 +41,7 @@ export const PaymentPage = () => {
         if (payment && payment.error) {
           return Swal.fire({
             icon: "error",
-            title: `Pemebelian sebesar ${new Intl.NumberFormat("id-ID", {
+            title: `Pembelian sebesar ${new Intl.NumberFormat("id-ID", {
               style: "currency",
               currency: "IDR",
             }).format(data.service_tariff)}`,
@@ -51,7 +51,7 @@ export const PaymentPage = () => {
         }
         Swal.fire({
           icon: "success",
-          title: `Pemebelian sebesar ${new Intl.NumberFormat("id-ID", {
+          title: `Pembelian sebesar ${new Intl.NumberFormat("id-ID", {
             style: "currency",
             currency: "IDR",
           }).format(data.service_tariff)}`,
