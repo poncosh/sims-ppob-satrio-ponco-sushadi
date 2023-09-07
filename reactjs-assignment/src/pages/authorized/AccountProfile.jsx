@@ -53,6 +53,15 @@ export const AccountProfile = () => {
         title: "Gagal upload foto profil",
         text: "Foto profil melebihi 100kb, mohon gunakan file dibawah 100kb",
       });
+    } else if (
+      imageFile.type !== "image/jpeg" &&
+      imageFile.type !== "image/png"
+    ) {
+      return Swal.fire({
+        icon: "error",
+        title: "Gagal upload foto profil",
+        text: "Format gambar yang diterima adalah JPG dan PNG",
+      });
     }
     setPhotoUrl(URL.createObjectURL(imageFile));
     modalRef.current.click();
