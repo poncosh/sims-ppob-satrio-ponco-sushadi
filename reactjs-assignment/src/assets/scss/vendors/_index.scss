@@ -14,11 +14,10 @@
   transform: translate(-50%, -50%);
 }
 
-#navigation-id:hover {
-  cursor: pointer;
-}
-
-#services-id:hover {
+#navigation-id:hover,
+#services-id:hover,
+#topup-form #topup-submit:hover,
+#payment-form #payment-submit:hover {
   cursor: pointer;
 }
 
@@ -58,4 +57,8 @@
 
 .colored-toast.swal2-icon-info {
   background-color: #3fc3ee !important;
+}
+
+.no-border {
+  border: 0;
 }

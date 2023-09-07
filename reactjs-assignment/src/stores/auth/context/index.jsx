@@ -148,6 +148,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const transactionService = async (serviceCode) => {
+    console.log("kesini");
     try {
       const { data } = await useApiPrivate().post("/transaction", {
         service_code: serviceCode,
