@@ -20,3 +20,16 @@ export const getBanner = createAsyncThunk("content/banner", async () => {
     return { error: true, msg: error.response.data.message };
   }
 });
+
+export const getTransactionHistory = createAsyncThunk(
+  "content/user-transaction",
+  async () => {
+    try {
+      const { data } = await useApiPrivate().get("/transaction/history");
+
+      return data.data.records;
+    } catch (error) {
+      return { error: true, msg: error.response.data.message };
+    }
+  }
+);

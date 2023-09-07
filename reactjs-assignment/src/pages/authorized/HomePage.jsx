@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useAuth } from "../../stores/auth/context";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { LoadingComponent } from "../../components/LoadingComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { HeaderWeb } from "../../components/HeaderWeb";
@@ -16,6 +16,7 @@ export const HomePage = () => {
   const { authState } = useAuth();
   const loading = useSelector((state) => state.content.isLoading);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const services = useSelector((state) => state.content.services);
   const banners = useSelector((state) => state.content.banners);
 
@@ -37,7 +38,11 @@ export const HomePage = () => {
         <div className="container mt-4">
           <div className="row">
             {services.map((service) => (
-              <ServicesCard key={service.service_code} service={service} />
+              <ServicesCard
+                key={service.service_code}
+                navigate={navigate}
+                service={service}
+              />
             ))}
           </div>
         </div>

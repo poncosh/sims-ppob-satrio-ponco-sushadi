@@ -31,7 +31,7 @@ export const UserData = () => {
           <p className="mt-3 mb-0 p-0">Selamat datang,</p>
           <p style={{ fontSize: "1.5rem", fontWeight: "600" }}>{fullName}</p>
         </div>
-        <div className="col-7 p-4 rounded-4 bg-secondtheme text-light">
+        <div className="col-7 p-4 d-flex flex-column justify-content-center rounded-4 bg-secondtheme text-light">
           <p className="mb-2">Saldo anda</p>
           <p className="mb-2" style={{ fontSize: "1.8rem", fontWeight: "600" }}>
             {!isEye ? "Rp *******" : balanceFormatted}

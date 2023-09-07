@@ -1,7 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import { LoginPage, RegisterPage } from "../../pages/unauthorized";
 import { Layout } from "../../components/Layout";
-import { HomePage, TopUp } from "../../pages/authorized";
+import {
+  HomePage,
+  PaymentPage,
+  TopUp,
+  TransactionPage,
+} from "../../pages/authorized";
+import { Transactions } from "../../components/TransactionMonth/Transactions";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +28,20 @@ export const router = createBrowserRouter([
       {
         path: "/top-up",
         element: <TopUp />,
+      },
+      {
+        path: "/payment/:slug",
+        element: <PaymentPage />,
+      },
+      {
+        path: "/transaction",
+        element: <TransactionPage />,
+        children: [
+          {
+            path: "/transaction/:month",
+            element: <Transactions />,
+          },
+        ],
       },
     ],
   },

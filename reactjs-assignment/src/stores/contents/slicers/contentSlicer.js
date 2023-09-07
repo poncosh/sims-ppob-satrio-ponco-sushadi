@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getBanner, getServices } from "../reducers/contentReducer";
+import {
+  getBanner,
+  getServices,
+  getTransactionHistory,
+} from "../reducers/contentReducer";
 
 export const contentSlice = createSlice({
   name: "content",
@@ -7,6 +11,7 @@ export const contentSlice = createSlice({
     isLoading: false,
     services: [],
     banners: [],
+    userTransaction: [],
   },
   extraReducers: {
     [getServices.pending.type]: (state) => {
@@ -21,6 +26,13 @@ export const contentSlice = createSlice({
     },
     [getBanner.fulfilled.type]: (state, { payload }) => {
       state.banners = payload;
+      state.isLoading = false;
+    },
+    [getTransactionHistory.pending.type]: (state) => {
+      state.isLoading = true;
+    },
+    [getTransactionHistory.fulfilled.type]: (state, { payload }) => {
+      state.userTransaction = payload;
       state.isLoading = false;
     },
   },
