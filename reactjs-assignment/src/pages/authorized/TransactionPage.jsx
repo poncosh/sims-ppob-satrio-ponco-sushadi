@@ -1,4 +1,4 @@
-import React, { useEffect, useId } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../../stores/auth/context";
 import { UserData } from "../../components/UserData";
 import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -12,14 +12,20 @@ export const TransactionPage = () => {
   const { authState } = useAuth();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [limit, setLimit] = useState(5);
+  const [userOpen, setUserOpen] = useState(false);
   const loading = useSelector((state) => state.content.isLoading);
   const transaction = useSelector((state) => state.content.userTransaction);
   const monthLocation = pathname.split("/")[2];
 
   useEffect(() => {
-    dispatch(getTransactionHistory());
+    dispatch(getTransactionHistory(limit));
     document.title = "SIMS - PPOB | Transaksi";
-  }, [dispatch]);
+  }, [limit]);
+
+  const fetchMoreData = () => {
+    setLimit(limit + 5);
+  };
 
   const data = transaction.map((el) => ({
     ...el,
@@ -107,9 +113,10 @@ export const TransactionPage = () => {
               <p
                 key={month.id}
                 id="navigation-id"
-                onClick={() =>
-                  navigate(`/transaction/${month.name.toLowerCase()}`)
-                }
+                onClick={() => {
+                  setUserOpen(true);
+                  navigate(`/transaction/${month.name.toLowerCase()}`);
+                }}
                 className="m-0 col-4 col-md-3 col-lg-1 rounded-top text-center pt-2 pb-2"
                 style={{
                   fontWeight:
@@ -128,6 +135,16 @@ export const TransactionPage = () => {
         <div className="container d-flex flex-column">
           <Outlet context={[data]} />
         </div>
+        {userOpen && (
+          <p
+            id="pagination-id"
+            onClick={fetchMoreData}
+            className="mb-5 mt-2 text-secondtheme text-center"
+            style={{ fontWeight: "600" }}
+          >
+            Show more
+          </p>
+        )}
       </main>
     </>
   );

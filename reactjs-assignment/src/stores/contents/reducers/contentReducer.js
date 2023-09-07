@@ -23,9 +23,13 @@ export const getBanner = createAsyncThunk("content/banner", async () => {
 
 export const getTransactionHistory = createAsyncThunk(
   "content/user-transaction",
-  async () => {
+  async (limit) => {
     try {
-      const { data } = await useApiPrivate().get("/transaction/history");
+      const { data } = await useApiPrivate().get("/transaction/history", {
+        params: {
+          limit: limit,
+        },
+      });
 
       return data.data.records;
     } catch (error) {

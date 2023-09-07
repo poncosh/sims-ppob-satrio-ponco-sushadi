@@ -49,6 +49,25 @@ export const TopUp = () => {
   };
 
   const submitTopUp = () => {
+    if (Number(amount) < 10000) {
+      return Swal.fire({
+        icon: "error",
+        title: `Top Up sebesar ${new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+        }).format(amount)}`,
+        text: "Gagal, mohon top up saldo di atas Rp 10.000,-",
+      });
+    } else if (Number(amount) > 1000000) {
+      return Swal.fire({
+        icon: "error",
+        title: `Top Up sebesar ${new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+        }).format(amount)}`,
+        text: "Gagal, mohon top up saldo di bawah Rp 1000.000,-",
+      });
+    }
     Swal.fire({
       title: `Anda yakin untuk Top Up sebesar ${new Intl.NumberFormat("id-ID", {
         style: "currency",

@@ -47,6 +47,13 @@ export const AccountProfile = () => {
 
   const onImageSelected = async (event) => {
     const imageFile = event.target.files[0];
+    if (imageFile.size > 100000) {
+      return Swal.fire({
+        icon: "error",
+        title: "Gagal upload foto profil",
+        text: "Foto profil melebihi 100kb, mohon gunakan file dibawah 100kb",
+      });
+    }
     setPhotoUrl(URL.createObjectURL(imageFile));
     modalRef.current.click();
     imageRef.current.value = "";
