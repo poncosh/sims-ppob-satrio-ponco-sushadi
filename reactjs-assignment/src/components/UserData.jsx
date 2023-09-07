@@ -26,7 +26,7 @@ export const UserData = () => {
                 ? profilePhoto
                 : authState.user?.profile_image
             }
-            style={{ width: "70px" }}
+            style={{ width: "70px", height: "70px", objectFit: "contain" }}
           />
           <p className="mt-3 mb-0 p-0">Selamat datang,</p>
           <p style={{ fontSize: "1.5rem", fontWeight: "600" }}>{fullName}</p>

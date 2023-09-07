@@ -37,6 +37,17 @@
   right: 10px;
 }
 
+#picture-edit {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+#picture-edit:hover {
+  cursor: pointer;
+  display: block;
+  opacity: 0.7;
+}
+
 .nav-link {
   color: #000000 !important;
   transition: 0.2s;

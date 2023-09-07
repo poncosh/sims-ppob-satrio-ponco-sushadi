@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { LoginPage, RegisterPage } from "../../pages/unauthorized";
 import { Layout } from "../../components/Layout";
 import {
+  AccountProfile,
   HomePage,
   PaymentPage,
   TopUp,
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
             element: <Transactions />,
           },
         ],
+      },
+      {
+        path: "/account",
+        element: <AccountProfile />,
       },
     ],
   },
