@@ -148,6 +148,7 @@ export const LoginPage = () => {
                   border: "solid 1px grey",
                   color: data.email === "" ? "grey" : "black",
                 }}
+                required={true}
               />
             </div>
             <div className="input-group w-75 d-flex align-items-center">

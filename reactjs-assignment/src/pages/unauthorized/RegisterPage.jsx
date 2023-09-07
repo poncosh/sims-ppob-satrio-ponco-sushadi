@@ -161,6 +161,7 @@ export const RegisterPage = () => {
                   border: "solid 1px grey",
                   color: data.email === "" ? "grey" : "black",
                 }}
+                required={true}
               />
             </div>
             <div className="input-group w-75 d-flex align-items-center">
@@ -185,6 +186,7 @@ export const RegisterPage = () => {
                   border: "solid 1px grey",
                   color: data.first_name === "" ? "grey" : "black",
                 }}
+                required={true}
               />
             </div>
             <div className="input-group w-75 d-flex align-items-center">
@@ -209,6 +211,7 @@ export const RegisterPage = () => {
                   border: "solid 1px grey",
                   color: data.last_name === "" ? "grey" : "black",
                 }}
+                required={true}
               />
             </div>
             <div className="input-group w-75 d-flex align-items-center">
