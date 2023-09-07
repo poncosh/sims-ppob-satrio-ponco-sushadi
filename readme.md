@@ -9,7 +9,7 @@ Fitur:
 
 Link:
 
-(https://drive.google.com/file/d/14nlpkgXHv7leX7pndoH55tsGFZIzx8zU/view?usp=sharing)
+https://github.com/poncosh/sims-ppob-satrio-ponco-sushadi/assets/74602380/cd7eacdf-5b3b-4597-9fa1-2369cced543d
 
 ![SIMS PPOB APP Login](./Login.png)
 
